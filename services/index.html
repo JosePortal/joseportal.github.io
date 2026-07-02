@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jose Portal — Production Systems & Farm Compliance</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-900: #0f2d1a;
+  --green-800: #1a3a2a;
+  --green-700: #2d5c3f;
+  --green-500: #4a8c5c;
+  --green-300: #7dc492;
+  --green-100: #c6e8ce;
+  --green-50:  #eaf5ec;
+  --gold:      #c8a84b;
+  --sand:      #f7f3ec;
+  --ink:       #1a1a18;
+  --ink-60:    #5a5a54;
+  --white:     #ffffff;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--sand);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* HERO */
+.hero {
+  background: var(--green-800);
+  padding: 56px 40px 48px;
+  text-align: center;
+  color: var(--white);
+}
+
+.hero-tag {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--green-300);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.hero h1 span {
+  color: var(--green-300);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-role {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 24px;
+}
+
+.hero-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  max-width: 540px;
+  margin: 0 auto 28px;
+  line-height: 1.75;
+}
+
+.hero-cta {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--green-900);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 12px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+/* SECTIONS */
+section {
+  padding: 48px 40px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green-500);
+  margin-bottom: 6px;
+}
+
+section h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green-800);
+  margin-bottom: 12px;
+}
+
+section p {
+  color: var(--ink-60);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.rule {
+  border: none;
+  border-top: 1px solid #ddd8cc;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* SERVICE CARDS */
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.service-card {
+  background: var(--white);
+  border: 1px solid #ddd8cc;
+  border-radius: 8px;
+  padding: 20px 18px;
+}
+
+.service-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green-800);
+  margin-bottom: 8px;
+}
+
+.service-card p {
+  font-size: 13px;
+  margin: 0;
+}
+
+.service-card.highlight {
+  border-color: var(--green-300);
+  border-width: 1.5px;
+  background: var(--green-50);
+}
+
+/* PORTFOLIO LINK */
+.portfolio-box {
+  background: var(--green-800);
+  border-radius: 10px;
+  padding: 24px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.portfolio-box:hover { opacity: 0.92; }
+
+.portfolio-box-text strong {
+  display: block;
+  font-size: 15px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.portfolio-box-text span {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
+
+.portfolio-box-arrow {
+  font-size: 22px;
+  color: var(--green-300);
+  flex-shrink: 0;
+}
+
+/* STATS ROW */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.stat {
+  background: var(--white);
+  border: 1px solid #ddd8cc;
+  border-radius: 8px;
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.stat-val {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--green-800);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-lab {
+  font-size: 11px;
+  color: var(--ink-60);
+}
+
+/* CONTACT */
+.contact-section {
+  background: var(--green-800);
+  padding: 48px 40px;
+  text-align: center;
+  color: var(--white);
+}
+
+.contact-section h2 {
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.contact-section p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 28px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-items {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.contact-item strong {
+  display: block;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.contact-item a,
+.contact-item span {
+  font-size: 14px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.contact-item a:hover { text-decoration: underline; }
+
+/* FOOTER */
+footer {
+  background: var(--green-900);
+  padding: 16px 40px;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 40px 20px; }
+  .hero h1 { font-size: 26px; }
+  section { padding: 36px 20px; }
+  .service-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(3, 1fr); }
+  .contact-section { padding: 40px 20px; }
+  .contact-items { flex-direction: column; align-items: center; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Production Systems · Farm Compliance · Victoria, Australia</div>
+  <h1>Systems that help your farm<br><span>stay compliant and run better.</span></h1>
+  <p class="hero-role">Jose Martin Portal Obregon — Production Systems Specialist</p>
+  <p class="hero-desc">
+    I build digital record-keeping systems for fresh produce growers —
+    designed to meet Agriculture Victoria's food safety requirements
+    and built by someone who works in the industry.
+  </p>
+  <a href="#contact" class="hero-cta">Get in touch →</a>
+</div>
+
+<!-- WHAT I OFFER -->
+<section>
+  <div class="section-label">What I offer</div>
+  <h2>Two ways I can help your operation.</h2>
+  <p>
+    Whether you need guidance on what the regulations require, a digital system
+    to keep your records audit-ready, or both — the service is tailored to your farm.
+  </p>
+
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>Part A — Compliance Guidance</h3>
+      <p>
+        An on-farm session to review your current practices against the Agriculture
+        Victoria food safety requirements. Walk away with a clear action plan and
+        no surprises at audit time.
+      </p>
+    </div>
+    <div class="service-card highlight">
+      <h3>Part B — Digital Record System</h3>
+      <p>
+        A simple, phone-friendly system that records your four key activities —
+        Spray, Planting, Harvesting, and Delivery — and connects them into a
+        one-click traceability report.
+      </p>
+    </div>
+  </div>
+
+  <div style="background: var(--green-50); border-left: 3px solid var(--green-500); border-radius: 0 8px 8px 0; padding: 14px 18px; margin-top: 16px;">
+    <p style="margin:0; font-size:13px; color: var(--green-800);">
+      <strong>No software licences required.</strong> The system runs on tools
+      you already have access to — accessible from any phone or browser,
+      nothing to install.
+    </p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- WHO I AM -->
+<section>
+  <div class="section-label">Who I am</div>
+  <h2>Built by someone on the floor — not just behind a screen.</h2>
+  <p>
+    I'm currently working as Production Supervisor at a commercial hydroponic
+    growing facility in Victoria, with over 10 years of experience in food safety,
+    microbiology, and fresh produce operations. I hold a Bachelor of Microbiology
+    and have worked in HACCP compliance and quality assurance across dairy and
+    horticulture environments.
+  </p>
+  <p>
+    All the systems I build are live and in active daily use in real commercial
+    operations — not prototypes.
+  </p>
+
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-val">10+</div>
+      <div class="stat-lab">Years in food production & QA</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">5</div>
+      <div class="stat-lab">Systems live in commercial use</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">0</div>
+      <div class="stat-lab">Software licence costs</div>
+    </div>
+  </div>
+
+  <a href="https://joseportal.github.io" target="_blank" class="portfolio-box">
+    <div class="portfolio-box-text">
+      <strong>View my full portfolio</strong>
+      <span>joseportal.github.io — all projects, experience, and background</span>
+    </div>
+    <div class="portfolio-box-arrow">→</div>
+  </a>
+</section>
+
+<hr class="rule">
+
+<!-- SYSTEM IN ACTION -->
+<section>
+  <div class="section-label">The system you're using right now</div>
+  <h2>You've already seen what this looks like.</h2>
+  <p>
+    The client portal you're accessing today was designed and built by me.
+    The same approach — digital records, real-time data, accessible from any device —
+    is what I bring to farm compliance systems.
+  </p>
+  <p>
+    If you're a grower who needs to meet Agriculture Victoria's food safety
+    requirements and wants a system that actually works the way your farm works,
+    I'd love to talk.
+  </p>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <h2>Ready to talk about your farm?</h2>
+  <p>
+    No obligation. A short conversation is enough to understand where you stand
+    and what — if anything — needs to change.
+  </p>
+  <div class="contact-items">
+    <div class="contact-item">
+      <strong>Name</strong>
+      <span>Jose Martin Portal Obregon</span>
+    </div>
+    <div class="contact-item">
+      <strong>Email</strong>
+      <a href="mailto:qualitytrace.au@gmail.com">qualitytrace.au@gmail.com</a>
+    </div>
+    <div class="contact-item">
+      <strong>Phone</strong>
+      <a href="tel:0487998136">0487 998 136</a>
+    </div>
+    <div class="contact-item">
+      <strong>Portfolio</strong>
+      <a href="https://joseportal.github.io" target="_blank">joseportal.github.io</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Jose Martin Portal Obregon · Production Systems & Farm Compliance · Victoria, Australia
+</footer>
+
+</body>
+</html>
