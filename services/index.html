@@ -3,431 +3,478 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jose Portal — Production Systems & Farm Compliance</title>
+<title>Jose Portal — Farm Compliance & Production Systems</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --green-900: #0f2d1a;
-  --green-800: #1a3a2a;
-  --green-700: #2d5c3f;
-  --green-500: #4a8c5c;
-  --green-300: #7dc492;
-  --green-100: #c6e8ce;
-  --green-50:  #eaf5ec;
-  --gold:      #c8a84b;
-  --sand:      #f7f3ec;
-  --ink:       #1a1a18;
-  --ink-60:    #5a5a54;
-  --white:     #ffffff;
+  --g900: #0f2d1a; --g800: #1a3a2a; --g700: #2d5c3f; --g500: #4a8c5c;
+  --g300: #7dc492; --g100: #c6e8ce; --g50: #eaf5ec;
+  --gold: #c8a84b; --sand: #f7f3ec; --sand2: #eee8d8;
+  --ink: #1a1a18; --ink60: #5a5a54; --ink40: #8a8a82; --white: #ffffff;
+  --orange: #e07b39; --blue: #3a7ab5;
 }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--sand); color: var(--ink); font-size: 15px; line-height: 1.65; }
 
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: var(--sand);
-  color: var(--ink);
-  font-size: 15px;
-  line-height: 1.65;
-}
+/* NAV */
+nav { background: var(--g800); padding: 0 32px; height: 52px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.nav-logo { font-size: 13px; font-weight: 600; color: var(--g100); }
+.nav-links { display: flex; gap: 20px; }
+.nav-links a { font-size: 11px; color: rgba(255,255,255,0.55); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; }
+.nav-links a:hover { color: white; }
 
 /* HERO */
-.hero {
-  background: var(--green-800);
-  padding: 56px 40px 48px;
-  text-align: center;
-  color: var(--white);
-}
-
-.hero-tag {
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--green-300);
-  font-family: 'Courier New', monospace;
-  margin-bottom: 16px;
-}
-
-.hero h1 {
-  font-size: 34px;
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 8px;
-}
-
-.hero h1 span {
-  color: var(--green-300);
-  font-style: italic;
-  font-weight: 400;
-}
-
-.hero-role {
-  font-size: 14px;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 24px;
-}
-
-.hero-desc {
-  font-size: 14px;
-  color: rgba(255,255,255,0.75);
-  max-width: 540px;
-  margin: 0 auto 28px;
-  line-height: 1.75;
-}
-
-.hero-cta {
-  display: inline-block;
-  background: var(--gold);
-  color: var(--green-900);
-  font-weight: 700;
-  font-size: 13px;
-  padding: 12px 28px;
-  border-radius: 6px;
-  text-decoration: none;
-  letter-spacing: 0.04em;
-}
+.hero { background: var(--g800); padding: 60px 32px 52px; text-align: center; color: white; }
+.hero-tag { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--g300); margin-bottom: 16px; }
+.hero h1 { font-size: 36px; font-weight: 700; line-height: 1.1; margin-bottom: 8px; }
+.hero h1 em { color: var(--g300); font-style: italic; font-weight: 400; }
+.hero-sub { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+.hero-desc { font-size: 14.5px; color: rgba(255,255,255,0.75); max-width: 540px; margin: 0 auto 32px; line-height: 1.75; }
+.btn-gold { display: inline-block; background: var(--gold); color: var(--g900); font-weight: 700; font-size: 13px; padding: 12px 28px; border-radius: 6px; text-decoration: none; }
 
 /* SECTIONS */
-section {
-  padding: 48px 40px;
-  max-width: 720px;
-  margin: 0 auto;
-}
+.section { padding: 56px 32px; max-width: 760px; margin: 0 auto; }
+.section-sm { padding: 40px 32px; max-width: 760px; margin: 0 auto; }
+.eyebrow { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--g500); margin-bottom: 6px; }
+.section h2 { font-size: 24px; font-weight: 700; color: var(--g800); margin-bottom: 12px; line-height: 1.2; }
+.section p, .section-sm p { color: var(--ink60); font-size: 14px; margin-bottom: 12px; }
+hr.rule { border: none; border-top: 1px solid var(--sand2); max-width: 760px; margin: 0 auto; }
 
-.section-label {
-  font-family: 'Courier New', monospace;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--green-500);
-  margin-bottom: 6px;
-}
+/* ALERT BOX */
+.alert { background: #fff8e6; border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; }
+.alert p { margin: 0; font-size: 13.5px; color: var(--g800); }
+.alert strong { color: var(--g800); }
 
-section h2 {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--green-800);
-  margin-bottom: 12px;
-}
+/* REGULATION TABLE */
+.reg-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+.reg-table th { background: var(--g800); color: white; padding: 10px 14px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+.reg-table td { padding: 10px 14px; border-bottom: 1px solid var(--sand2); color: var(--ink60); vertical-align: top; }
+.reg-table tr:nth-child(even) td { background: var(--white); }
+.check { color: var(--g500); font-weight: 700; font-size: 16px; }
 
-section p {
-  color: var(--ink-60);
-  font-size: 14px;
-  margin-bottom: 12px;
-}
+/* FOUR ACTIVITIES */
+.activities { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.act-card { background: var(--white); border: 1px solid var(--sand2); border-radius: 8px; padding: 20px 18px; }
+.act-card.spray  { border-top: 3px solid var(--orange); }
+.act-card.plant  { border-top: 3px solid var(--g500); }
+.act-card.harvest{ border-top: 3px solid var(--gold); }
+.act-card.deliver{ border-top: 3px solid var(--blue); }
+.act-icon { font-size: 22px; margin-bottom: 8px; }
+.act-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.act-example { font-size: 12px; color: var(--ink40); background: var(--sand); border-radius: 6px; padding: 10px 12px; margin-top: 10px; line-height: 1.6; }
+.act-example strong { color: var(--ink60); display: block; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
 
-.rule {
-  border: none;
-  border-top: 1px solid #ddd8cc;
-  max-width: 720px;
-  margin: 0 auto;
-}
+/* CHECKLIST */
+.checklist { margin: 24px 0; display: flex; flex-direction: column; gap: 10px; }
+.check-item { display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--sand2); border-radius: 8px; padding: 14px 16px; }
+.check-box { width: 22px; height: 22px; min-width: 22px; border: 2px solid var(--sand2); border-radius: 4px; margin-top: 1px; }
+.check-box.done { background: var(--g500); border-color: var(--g500); display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; }
+.check-label { font-size: 13.5px; color: var(--ink); font-weight: 500; margin-bottom: 2px; }
+.check-desc { font-size: 12px; color: var(--ink60); }
 
-/* SERVICE CARDS */
-.service-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-top: 20px;
-}
+/* FAQ */
+.faq { margin: 24px 0; display: flex; flex-direction: column; gap: 2px; }
+.faq-item { background: var(--white); border: 1px solid var(--sand2); border-radius: 8px; overflow: hidden; margin-bottom: 8px; }
+.faq-q { padding: 14px 18px; font-size: 14px; font-weight: 600; color: var(--g800); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-q:hover { background: var(--g50); }
+.faq-arrow { font-size: 18px; color: var(--g500); transition: transform 0.2s; }
+.faq-a { padding: 0 18px 14px; font-size: 13.5px; color: var(--ink60); line-height: 1.7; border-top: 1px solid var(--sand2); display: none; padding-top: 12px; }
+.faq-item.open .faq-a { display: block; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
 
-.service-card {
-  background: var(--white);
-  border: 1px solid #ddd8cc;
-  border-radius: 8px;
-  padding: 20px 18px;
-}
+/* SERVICES */
+.service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.service-card { background: var(--white); border: 1px solid var(--sand2); border-radius: 8px; padding: 22px 18px; }
+.service-card.featured { border-color: var(--g300); border-width: 1.5px; background: var(--g50); }
+.service-card h3 { font-size: 14px; font-weight: 700; color: var(--g800); margin-bottom: 8px; }
+.service-card p { font-size: 13px; margin: 0; }
 
-.service-card h3 {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--green-800);
-  margin-bottom: 8px;
-}
-
-.service-card p {
-  font-size: 13px;
-  margin: 0;
-}
-
-.service-card.highlight {
-  border-color: var(--green-300);
-  border-width: 1.5px;
-  background: var(--green-50);
-}
-
-/* PORTFOLIO LINK */
-.portfolio-box {
-  background: var(--green-800);
-  border-radius: 10px;
-  padding: 24px 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 20px;
-  text-decoration: none;
-}
-
-.portfolio-box:hover { opacity: 0.92; }
-
-.portfolio-box-text strong {
-  display: block;
-  font-size: 15px;
-  color: var(--white);
-  margin-bottom: 4px;
-}
-
-.portfolio-box-text span {
-  font-size: 13px;
-  color: rgba(255,255,255,0.6);
-}
-
-.portfolio-box-arrow {
-  font-size: 22px;
-  color: var(--green-300);
-  flex-shrink: 0;
-}
-
-/* STATS ROW */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin: 20px 0;
-}
-
-.stat {
-  background: var(--white);
-  border: 1px solid #ddd8cc;
-  border-radius: 8px;
-  padding: 16px 12px;
-  text-align: center;
-}
-
-.stat-val {
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--green-800);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.stat-lab {
-  font-size: 11px;
-  color: var(--ink-60);
-}
+/* ABOUT */
+.about-box { background: var(--g800); color: white; border-radius: 10px; padding: 28px 24px; margin: 24px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.about-box h3 { font-size: 13px; font-weight: 700; color: var(--g100); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+.about-box p { font-size: 13px; color: rgba(255,255,255,0.7); margin: 0; }
 
 /* CONTACT */
-.contact-section {
-  background: var(--green-800);
-  padding: 48px 40px;
-  text-align: center;
-  color: var(--white);
-}
-
-.contact-section h2 {
-  font-size: 22px;
-  color: var(--white);
-  margin-bottom: 8px;
-}
-
-.contact-section p {
-  font-size: 14px;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 28px;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contact-items {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 28px;
-}
-
-.contact-item strong {
-  display: block;
-  font-family: 'Courier New', monospace;
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 4px;
-}
-
-.contact-item a,
-.contact-item span {
-  font-size: 14px;
-  color: var(--white);
-  text-decoration: none;
-}
-
-.contact-item a:hover { text-decoration: underline; }
+.contact-footer { background: var(--g800); padding: 52px 32px; text-align: center; color: white; }
+.contact-footer h2 { font-size: 24px; color: white; margin-bottom: 8px; }
+.contact-footer p { font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 28px; max-width: 460px; margin-left: auto; margin-right: auto; }
+.contact-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 28px; }
+.contact-item strong { display: block; font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.contact-item a, .contact-item span { font-size: 14px; color: white; text-decoration: none; }
 
 /* FOOTER */
-footer {
-  background: var(--green-900);
-  padding: 16px 40px;
-  text-align: center;
-  font-size: 11px;
-  color: rgba(255,255,255,0.3);
-}
+footer { background: var(--g900); padding: 16px 32px; text-align: center; font-size: 11px; color: rgba(255,255,255,0.3); }
 
+/* RESPONSIVE */
 @media (max-width: 600px) {
   .hero { padding: 40px 20px; }
   .hero h1 { font-size: 26px; }
-  section { padding: 36px 20px; }
+  .section, .section-sm { padding: 40px 20px; }
+  .activities { grid-template-columns: 1fr; }
   .service-grid { grid-template-columns: 1fr; }
-  .stats-row { grid-template-columns: repeat(3, 1fr); }
-  .contact-section { padding: 40px 20px; }
-  .contact-items { flex-direction: column; align-items: center; gap: 16px; }
+  .about-box { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .contact-footer { padding: 40px 20px; }
 }
 </style>
 </head>
 <body>
 
+<nav>
+  <span class="nav-logo">Jose Portal · Farm Compliance</span>
+  <div class="nav-links">
+    <a href="#regulation">Regulation</a>
+    <a href="#activities">Activities</a>
+    <a href="#checklist">Checklist</a>
+    <a href="#faq">FAQ</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-tag">Production Systems · Farm Compliance · Victoria, Australia</div>
-  <h1>Systems that help your farm<br><span>stay compliant and run better.</span></h1>
-  <p class="hero-role">Jose Martin Portal Obregon — Production Systems Specialist</p>
+  <div class="hero-tag">Farm Compliance · Victoria, Australia · Fresh Produce</div>
+  <h1>Your farm records,<br><em>sorted for good.</em></h1>
+  <p class="hero-sub">Jose Martin Portal Obregon — Production Systems & Food Safety Specialist</p>
   <p class="hero-desc">
-    I build digital record-keeping systems for fresh produce growers —
-    designed to meet Agriculture Victoria's food safety requirements
-    and built by someone who works in the industry.
+    Everything you need to understand what Agriculture Victoria requires,
+    check where your farm stands today, and get your records audit-ready
+    — written by someone who works in the industry.
   </p>
-  <a href="#contact" class="hero-cta">Get in touch →</a>
+  <a href="#checklist" class="btn-gold">Check if your farm is ready →</a>
 </div>
 
-<!-- WHAT I OFFER -->
-<section>
-  <div class="section-label">What I offer</div>
-  <h2>Two ways I can help your operation.</h2>
+<!-- REGULATION -->
+<div class="section" id="regulation">
+  <div class="eyebrow">What's happening</div>
+  <h2>What Agriculture Victoria now requires from growers.</h2>
   <p>
-    Whether you need guidance on what the regulations require, a digital system
-    to keep your records audit-ready, or both — the service is tailored to your farm.
+    Since February 2025, all Victorian growers of leafy vegetables, berries, and melons
+    must register with Agriculture Victoria and demonstrate they have a
+    Food Safety Management System in place. Audits begin in 2027.
   </p>
+
+  <div class="alert">
+    <p><strong>Good news:</strong> A 50% discount on registration fees applies in 2026.
+    If you haven't registered yet, now is the best time — before the window closes and audits begin.</p>
+  </div>
+
+  <p>In practice, an auditor will want to see that you have records covering these areas:</p>
+
+  <table class="reg-table">
+    <thead>
+      <tr>
+        <th>What they check</th>
+        <th>What it means in practice</th>
+        <th style="text-align:center;">Required</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Chemical use records</td><td>What you sprayed, on which crop, when, and by whom</td><td style="text-align:center;" class="check">✓</td></tr>
+      <tr><td>Withholding period compliance</td><td>Proof that produce wasn't harvested before the safe period after spraying</td><td style="text-align:center;" class="check">✓</td></tr>
+      <tr><td>Planting records</td><td>What variety, where it was planted, and when</td><td style="text-align:center;" class="check">✓</td></tr>
+      <tr><td>Harvest records</td><td>What was cut, from which block, how much, and when</td><td style="text-align:center;" class="check">✓</td></tr>
+      <tr><td>Delivery & cold chain</td><td>Who received the produce, temperature at dispatch, and date</td><td style="text-align:center;" class="check">✓</td></tr>
+      <tr><td>Traceability</td><td>Ability to trace any batch from paddock to customer and back</td><td style="text-align:center;" class="check">✓</td></tr>
+      <tr><td>Records available for inspection</td><td>All records must be retrievable quickly — digital or paper</td><td style="text-align:center;" class="check">✓</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="rule">
+
+<!-- FOUR ACTIVITIES -->
+<div class="section" id="activities">
+  <div class="eyebrow">The four core activities</div>
+  <h2>What you need to record — and what good looks like.</h2>
+  <p>
+    Most growers are already doing these four things every week.
+    The question is whether those records would hold up if someone asked to see them tomorrow.
+    Here's what each activity needs to capture.
+  </p>
+
+  <div class="activities">
+    <div class="act-card spray">
+      <div class="act-icon">🧴</div>
+      <div class="act-title">Spray & Chemical Use</div>
+      <p style="font-size:13px; color:var(--ink60); margin-bottom:0;">Every chemical application needs a record — pesticide, herbicide, or fertiliser.</p>
+      <div class="act-example">
+        <strong>What a good record includes</strong>
+        Product name & registration number · Dose & dilution rate · Date & time ·
+        Wind speed at time of application · Crop & area treated ·
+        Withholding period · Operator name
+      </div>
+    </div>
+
+    <div class="act-card plant">
+      <div class="act-icon">🌱</div>
+      <div class="act-title">Planting</div>
+      <p style="font-size:13px; color:var(--ink60); margin-bottom:0;">The starting point of your traceability chain. Without it, nothing else connects.</p>
+      <div class="act-example">
+        <strong>What a good record includes</strong>
+        Variety · Quantity · Block, row, or bed · Date of planting ·
+        Seed / seedlings supplier · Responsible person
+      </div>
+    </div>
+
+    <div class="act-card harvest">
+      <div class="act-icon">✂️</div>
+      <div class="act-title">Harvesting</div>
+      <p style="font-size:13px; color:var(--ink60); margin-bottom:0;">Links your planting records to delivery. This is where the traceability chain closes.</p>
+      <div class="act-example">
+        <strong>What a good record includes</strong>
+        Product & variety · Block harvested · Quantity ·
+        Packaging type (crates, cartons, bins, boxes) ·
+        Date & time · Batch or lot number · Harvesting crew
+      </div>
+    </div>
+
+    <div class="act-card deliver">
+      <div class="act-icon">🚛</div>
+      <div class="act-title">Delivery & Cold Chain</div>
+      <p style="font-size:13px; color:var(--ink60); margin-bottom:0;">Protects you if a customer raises a quality concern after produce leaves your farm.</p>
+      <div class="act-example">
+        <strong>What a good record includes</strong>
+        Customer name & delivery address · Product & quantity ·
+        Batch number · Dispatch date · Temperature at dispatch ·
+        Vehicle or transport method
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- CHECKLIST -->
+<div class="section" id="checklist">
+  <div class="eyebrow">Self-assessment</div>
+  <h2>Is your farm audit-ready? Check here.</h2>
+  <p>
+    Go through each item below. If you can honestly tick them all, you're in good shape.
+    If some are missing — that's exactly where to start.
+  </p>
+
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div>
+        <div class="check-label">I am registered with Agriculture Victoria</div>
+        <div class="check-desc">Required for all growers of leafy vegetables, berries, and melons in Victoria since February 2025.</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div>
+        <div class="check-label">I have a written Food Safety Management Statement</div>
+        <div class="check-desc">A document describing how your farm manages food safety risks — this is the foundation the auditor checks first.</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div>
+        <div class="check-label">I record every chemical application with product, dose, date, crop, and operator</div>
+        <div class="check-desc">This is the most scrutinised area at audit. Wind speed at time of application is also required.</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div>
+        <div class="check-label">I can show that withholding periods were respected before every harvest</div>
+        <div class="check-desc">Your spray records and harvest records need to be connected so the gap between application and harvest is visible.</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div>
+        <div class="check-label">I keep planting records with variety, location, and date</div>
+        <div class="check-desc">Without planting records, you can't demonstrate traceability back to the source.</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div>
+        <div class="check-label">I record every harvest with batch number, block, quantity, and packaging type</div>
+        <div class="check-desc">The batch number is what connects your harvest to your delivery — it's essential for traceability.</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div>
+        <div class="check-label">I document every delivery including temperature at dispatch</div>
+        <div class="check-desc">Cold chain records protect you if a customer raises a quality concern after produce leaves your farm.</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div>
+        <div class="check-label">I can trace any batch from paddock to customer in under 10 minutes</div>
+        <div class="check-desc">This is the traceability test. If finding this information takes longer, your records need to be better connected.</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div>
+        <div class="check-label">All my records are stored somewhere they can be retrieved quickly for inspection</div>
+        <div class="check-desc">Paper records are accepted but must be organised, legible, and complete. Digital records are easier to retrieve and harder to lose.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert" style="margin-top:24px;">
+    <p>If you ticked fewer than 6 of these, your farm has gaps that an auditor would flag.
+    <strong>Get in touch and we can work through them together.</strong></p>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- FAQ -->
+<div class="section" id="faq">
+  <div class="eyebrow">Common questions</div>
+  <h2>Questions growers ask most.</h2>
+
+  <div class="faq">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        Do I really need to register if I'm a small grower?
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">
+        Yes. The registration requirement applies to all growers of leafy vegetables, berries,
+        and melons in Victoria regardless of size. There is no minimum acreage or volume threshold.
+        If you grow these crops and sell them, you need to register.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        Can I keep paper records or do I need a digital system?
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">
+        Paper records are accepted. However, they must be complete, legible, organised,
+        and retrievable quickly for inspection. In practice, paper records are harder to
+        search, easier to lose, and more difficult to use when demonstrating traceability.
+        A simple digital system makes all of this significantly easier — but the choice is yours.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        What is Freshcare and do I need to be accredited?
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">
+        Freshcare is an Australian on-farm food safety program widely recognised by retailers
+        and wholesalers. Agriculture Victoria accepts Freshcare FSQ (Food Safety & Quality)
+        accreditation as a recognised food safety management system. You are not required to
+        be Freshcare accredited, but if your buyers require it, having your records in order
+        makes the accreditation process much simpler.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        When do audits start and what happens if I'm not ready?
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">
+        Audits are scheduled to begin in February 2027. Growers who are registered but
+        cannot demonstrate a functioning food safety management system at audit time
+        may face penalties or be required to rectify gaps within a set timeframe.
+        The earlier you get organised, the less stressful the process will be.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        What is traceability and why does it matter?
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">
+        Traceability means being able to follow any batch of produce — forward or backward —
+        through every step it went through on your farm. If a customer calls about a delivery,
+        you should be able to show where that product was planted, what chemicals were applied
+        to it and when, when it was harvested, and when it was dispatched. If a food safety
+        incident occurs and you can't demonstrate this, the consequences are much more serious.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        How much does a digital record system cost?
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">
+        Pricing depends on the size of your operation and what you need. The systems I build
+        run on tools you likely already have access to — no expensive software licences.
+        Get in touch for a no-obligation conversation and I'll give you a clear picture of
+        what it would cost for your farm specifically.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- SERVICES -->
+<div class="section" id="services">
+  <div class="eyebrow">How I can help</div>
+  <h2>Two ways to work together.</h2>
+  <p>Whether you need guidance, a system, or both — the service is tailored to your farm.</p>
 
   <div class="service-grid">
     <div class="service-card">
       <h3>Part A — Compliance Guidance</h3>
-      <p>
-        An on-farm session to review your current practices against the Agriculture
-        Victoria food safety requirements. Walk away with a clear action plan and
-        no surprises at audit time.
-      </p>
+      <p>An on-farm session to review your current practices against the Agriculture Victoria
+      requirements. Walk away with a clear action plan and no surprises at audit time.</p>
     </div>
-    <div class="service-card highlight">
+    <div class="service-card featured">
       <h3>Part B — Digital Record System</h3>
-      <p>
-        A simple, phone-friendly system that records your four key activities —
-        Spray, Planting, Harvesting, and Delivery — and connects them into a
-        one-click traceability report.
-      </p>
+      <p>A simple, phone-friendly system that records your four key activities — Spray,
+      Planting, Harvesting, and Delivery — and connects them into a one-click traceability
+      report. No software licences. Accessible from any device.</p>
     </div>
   </div>
 
-  <div style="background: var(--green-50); border-left: 3px solid var(--green-500); border-radius: 0 8px 8px 0; padding: 14px 18px; margin-top: 16px;">
-    <p style="margin:0; font-size:13px; color: var(--green-800);">
-      <strong>No software licences required.</strong> The system runs on tools
-      you already have access to — accessible from any phone or browser,
-      nothing to install.
-    </p>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- WHO I AM -->
-<section>
-  <div class="section-label">Who I am</div>
-  <h2>Built by someone on the floor — not just behind a screen.</h2>
-  <p>
-    I'm currently working as Production Supervisor at a commercial hydroponic
-    growing facility in Victoria, with over 10 years of experience in food safety,
-    microbiology, and fresh produce operations. I hold a Bachelor of Microbiology
-    and have worked in HACCP compliance and quality assurance across dairy and
-    horticulture environments.
-  </p>
-  <p>
-    All the systems I build are live and in active daily use in real commercial
-    operations — not prototypes.
-  </p>
-
-  <div class="stats-row">
-    <div class="stat">
-      <div class="stat-val">10+</div>
-      <div class="stat-lab">Years in food production & QA</div>
+  <div class="about-box">
+    <div>
+      <h3>Production Experience</h3>
+      <p>Currently working as Production Supervisor at a commercial hydroponic facility
+      in Victoria. 10+ years across food safety, QA, and fresh produce operations.
+      Bachelor of Microbiology. HACCP and GMP compliance background.</p>
     </div>
-    <div class="stat">
-      <div class="stat-val">5</div>
-      <div class="stat-lab">Systems live in commercial use</div>
-    </div>
-    <div class="stat">
-      <div class="stat-val">0</div>
-      <div class="stat-lab">Software licence costs</div>
-    </div>
-  </div>
-
-  <a href="https://joseportal.github.io" target="_blank" class="portfolio-box">
-    <div class="portfolio-box-text">
-      <strong>View my full portfolio</strong>
-      <span>joseportal.github.io — all projects, experience, and background</span>
-    </div>
-    <div class="portfolio-box-arrow">→</div>
-  </a>
-</section>
-
-<hr class="rule">
-
-<!-- SYSTEM IN ACTION -->
-<section>
-  <div class="section-label">The system you're using right now</div>
-  <h2>You've already seen what this looks like.</h2>
-  <p>
-    The client portal you're accessing today was designed and built by me.
-    The same approach — digital records, real-time data, accessible from any device —
-    is what I bring to farm compliance systems.
-  </p>
-  <p>
-    If you're a grower who needs to meet Agriculture Victoria's food safety
-    requirements and wants a system that actually works the way your farm works,
-    I'd love to talk.
-  </p>
-</section>
-
-<!-- CONTACT -->
-<div class="contact-section" id="contact">
-  <h2>Ready to talk about your farm?</h2>
-  <p>
-    No obligation. A short conversation is enough to understand where you stand
-    and what — if anything — needs to change.
-  </p>
-  <div class="contact-items">
-    <div class="contact-item">
-      <strong>Name</strong>
-      <span>Jose Martin Portal Obregon</span>
-    </div>
-    <div class="contact-item">
-      <strong>Email</strong>
-      <a href="mailto:qualitytrace.au@gmail.com">qualitytrace.au@gmail.com</a>
-    </div>
-    <div class="contact-item">
-      <strong>Phone</strong>
-      <a href="tel:0487998136">0487 998 136</a>
-    </div>
-    <div class="contact-item">
-      <strong>Portfolio</strong>
-      <a href="https://joseportal.github.io" target="_blank">joseportal.github.io</a>
+    <div>
+      <h3>Systems in Use Today</h3>
+      <p>All systems I build are live in active commercial operations — not prototypes.
+      The digital record-keeping system currently running for a nursery in Werribee South
+      manages 2,800+ records across 8+ product lines.</p>
     </div>
   </div>
 </div>
 
-<footer>
-  Jose Martin Portal Obregon · Production Systems & Farm Compliance · Victoria, Australia
-</footer>
+<!-- CONTACT -->
+<div class="contact-footer" id="contact">
+  <h2>Ready to talk about your farm?</h2>
+  <p>No obligation. A short conversation is enough to understand where you stand
+  and what — if anything — needs to change.</p>
+  <div class="contact-row">
+    <div class="contact-item"><strong>Name</strong><span>Jose Martin Portal Obregon</span></div>
+    <div class="contact-item"><strong>Email</strong><a href="mailto:qualitytrace.au@gmail.com">qualitytrace.au@gmail.com</a></div>
+    <div class="contact-item"><strong>Phone</strong><a href="tel:0487998136">0487 998 136</a></div>
+    <div class="contact-item"><strong>Portfolio</strong><a href="https://joseportal.github.io" target="_blank">joseportal.github.io</a></div>
+  </div>
+</div>
 
+<footer>Jose Martin Portal Obregon · Production Systems & Farm Compliance · Victoria, Australia</footer>
+
+<script>
+function toggle(el) {
+  var item = el.parentElement;
+  item.classList.toggle('open');
+}
+</script>
 </body>
 </html>
