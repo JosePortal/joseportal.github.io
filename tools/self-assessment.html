@@ -875,7 +875,7 @@ function renderConfirmation(screen) {
     </div>
   `;
   screen.appendChild(card);
-  document.getElementById('restartBtn').onclick = () => alert('→ In production, this would go to joseportal.github.io/services');
+  document.getElementById('restartBtn').onclick = () => window.location.href = '/services/';
   document.getElementById('againBtn').onclick = () => {
     state = { step: 0, certified: null, email: null, answers: {} };
     render();
