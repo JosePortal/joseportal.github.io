@@ -114,7 +114,16 @@ nav {
   font-size: 12px;
   color: var(--green-100);
 }
-
+.hero-actions { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--gold); color: var(--green-900); font-weight: 700;
+  font-size: 13px; padding: 11px 22px; border-radius: 6px; text-decoration: none;
+}
+.btn-secondary {
+  background: transparent; color: var(--white); font-weight: 600;
+  font-size: 13px; padding: 10px 20px; border-radius: 6px; text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.3);
+}
 /* HERO STATS */
 .hero-stats {
   background: rgba(255,255,255,0.06);
@@ -488,6 +497,10 @@ footer {
       with practical digital systems development. The tools I build are designed by someone who
       works in the industry — not just in software.
     </p>
+    <div class="hero-actions">
+      <a href="/tools/self-assessment.html" class="btn-primary">Free Compliance Check →</a>
+      <a href="/services/" class="btn-secondary">Farm Compliance Services</a>
+    </div>
     <div class="hero-tags">
       <span class="tag">Google Apps Script</span>
       <span class="tag">Google Sheets</span>
@@ -721,7 +734,7 @@ footer {
         worker and date range. Includes manual record support, employee register, SOPs, and
         payroll preparation output. 779+ entries recorded to date.
       </p>
-      <div class="project-features">
+            <div class="project-features">
         <span class="feature-tag">Log In / Log Out forms</span>
         <span class="feature-tag">Auto hour calculation</span>
         <span class="feature-tag">Weekly summary</span>
@@ -731,6 +744,11 @@ footer {
     </div>
 
   </div>
+  <p style="margin-top:28px; font-size:14px; color:var(--ink-60);">
+    This is the same system-building behind
+    <strong style="color:var(--green-700);">QualityTrace</strong> —
+    <a href="/services/" style="color:var(--green-600); font-weight:600;">see how it applies to farm compliance →</a>
+  </p>
 </section>
 
 <!-- EXPERIENCE -->
