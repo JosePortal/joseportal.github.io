@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jose Martin Portal Obregon — Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-900: #0f2d1a;
+  --green-800: #1a3a2a;
+  --green-700: #2d5c3f;
+  --green-600: #3a7a52;
+  --green-500: #4a8c5c;
+  --green-300: #7dc492;
+  --green-100: #c6e8ce;
+  --green-50:  #eaf5ec;
+  --gold:      #c8a84b;
+  --gold-lt:   #f0e0a8;
+  --sand:      #f7f3ec;
+  --ink:       #1a1a18;
+  --ink-60:    #5a5a54;
+  --ink-40:    #8a8a82;
+  --white:     #ffffff;
+  --radius:    10px;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: var(--sand);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+.accent { font-family: 'Fraunces', serif; font-style: italic; font-weight: 500; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--green-800);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 56px;
+}
+.nav-logo { font-size: 13px; font-weight: 600; color: var(--green-100); letter-spacing: 0.04em; }
+.nav-links { display: flex; gap: 26px; align-items: center; }
+.nav-links a {
+  font-size: 12px; color: rgba(255,255,255,0.6); text-decoration: none;
+  letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-drop-wrap { position: relative; height: 56px; display: flex; align-items: center; }
+.nav-dropdown {
+  position: absolute; top: 100%; left: 0;
+  background: var(--white); border-radius: 0 0 8px 8px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  min-width: 220px; display: none; overflow: hidden;
+}
+.nav-drop-wrap:hover .nav-dropdown { display: block; }
+.nav-dropdown a {
+  display: block; padding: 12px 16px; font-size: 12px;
+  color: var(--green-800); text-transform: none; letter-spacing: normal;
+  border-bottom: 1px solid #eee; font-weight: 600;
+}
+.nav-dropdown a:last-child { border-bottom: none; }
+.nav-dropdown a:hover { background: var(--green-50); color: var(--green-700); }
+.nav-current { color: var(--white) !important; border-bottom: 1px solid var(--gold); padding-bottom: 4px; }
+
+/* HERO */
+.hero {
+  background: var(--green-800); color: var(--white);
+  padding: 72px 48px 64px;
+  display: grid; grid-template-columns: 1fr 360px; gap: 48px; align-items: center;
+}
+.hero-eyebrow {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--green-300); margin-bottom: 18px; font-family: 'Courier New', monospace;
+}
+.hero h1 { font-size: 42px; font-weight: 700; line-height: 1.1; color: var(--white); margin-bottom: 10px; }
+.hero h1 span { color: var(--green-300); }
+.hero-role { font-size: 16px; color: rgba(255,255,255,0.65); margin-bottom: 24px; }
+.hero-desc { font-size: 16px; color: rgba(255,255,255,0.75); max-width: 560px; line-height: 1.8; margin-bottom: 32px; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 14px; font-size: 12.5px; color: var(--green-100); }
+
+.hero-stats { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 28px 24px; }
+.hero-stats h3 { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-300); font-family: 'Courier New', monospace; margin-bottom: 20px; }
+.stat-item { margin-bottom: 18px; }
+.stat-item:last-child { margin-bottom: 0; }
+.stat-value { font-size: 28px; font-weight: 700; color: var(--white); line-height: 1; }
+.stat-label { font-size: 12.5px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+.stat-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 14px 0; }
+
+/* SECTIONS */
+section { padding: 60px 48px; }
+section:nth-child(even) { background: var(--white); }
+.section-label { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green-600); margin-bottom: 8px; }
+section h2 { font-size: 28px; font-weight: 700; color: var(--green-800); margin-bottom: 12px; line-height: 1.2; }
+.section-intro { font-size: 16.5px; color: var(--ink-60); max-width: 680px; margin-bottom: 36px; }
+
+/* DUAL PROFILE */
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 36px; }
+.profile-card { background: var(--sand); border: 1px solid #ddd8cc; border-radius: var(--radius); padding: 26px 22px; }
+.profile-card h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green-700); margin-bottom: 10px; }
+.profile-card p { font-size: 15px; color: var(--ink-60); }
+.profile-accent { border-left: 3px solid var(--gold); }
+.profile-accent h3 { color: var(--green-800); }
+
+.skills-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.skill-pill { background: var(--green-50); border: 1px solid var(--green-100); border-radius: 20px; padding: 5px 14px; font-size: 12.5px; color: var(--green-700); font-weight: 500; }
+
+/* PROJECTS */
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.project-card { background: var(--white); border: 1px solid #ddd8cc; border-radius: var(--radius); padding: 26px 22px; display: flex; flex-direction: column; gap: 14px; transition: box-shadow 0.2s; }
+.project-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.project-icon { width: 42px; height: 42px; min-width: 42px; background: var(--green-800); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.project-badge { font-size: 10px; font-family: 'Courier New', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-600); background: var(--green-50); border: 1px solid var(--green-100); border-radius: 20px; padding: 3px 10px; white-space: nowrap; }
+.project-badge.live { color: #1a6b3a; background: #e6f5eb; border-color: #9cd4b0; }
+.project-card h3 { font-size: 16px; font-weight: 700; color: var(--green-800); margin: 0; }
+.project-org { font-size: 12.5px; color: var(--ink-40); margin-top: 2px; }
+.project-desc { font-size: 14.5px; color: var(--ink-60); line-height: 1.7; }
+.project-features { display: flex; flex-wrap: wrap; gap: 6px; }
+.feature-tag { background: var(--white); border: 1px solid #ddd8cc; border-radius: 6px; padding: 3px 10px; font-size: 12px; color: var(--ink-60); }
+
+/* EXPERIENCE TIMELINE */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.timeline-item { display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 26px 0; border-bottom: 1px solid #e8e0d0; }
+.timeline-item:last-child { border-bottom: none; }
+.timeline-period { font-family: 'Courier New', monospace; font-size: 11px; color: var(--ink-40); letter-spacing: 0.06em; margin-bottom: 6px; }
+.timeline-company { font-size: 13.5px; font-weight: 700; color: var(--green-700); }
+.timeline-location { font-size: 12.5px; color: var(--ink-40); }
+.timeline-right h3 { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.timeline-right p { font-size: 14.5px; color: var(--ink-60); line-height: 1.7; }
+.timeline-achievements { margin-top: 12px; display: flex; flex-direction: column; gap: 5px; }
+.achievement { display: flex; gap: 8px; font-size: 14px; color: var(--ink-60); }
+.achievement::before { content: '—'; color: var(--green-500); flex-shrink: 0; }
+
+/* EDUCATION */
+.edu-block { background: var(--white); border: 1px solid #ddd8cc; border-radius: var(--radius); padding: 24px 26px; margin-bottom: 16px; }
+.edu-period { font-family: 'Courier New', monospace; font-size: 10.5px; color: var(--ink-40); margin-bottom: 6px; }
+.edu-title { font-size: 17px; font-weight: 700; color: var(--green-800); margin-bottom: 10px; }
+.edu-desc { font-size: 14.5px; color: var(--ink-60); line-height: 1.7; margin-bottom: 16px; }
+.edu-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.edu-pill { background: var(--green-50); border: 1px solid var(--green-100); border-radius: 20px; padding: 4px 13px; font-size: 12.5px; color: var(--green-700); font-weight: 600; }
+.edu-block.simple { padding: 20px 26px; margin-bottom: 0; }
+.edu-block.simple .edu-title { font-size: 15px; margin-bottom: 0; }
+
+/* CONTACT */
+.contact-section { background: var(--green-800); color: var(--white); padding: 60px 48px; }
+.contact-section h2 { color: var(--white); }
+.contact-section .section-label { color: var(--green-300); }
+.contact-section .section-intro { color: rgba(255,255,255,0.65); }
+.qt-connector { font-size: 15px; color: var(--gold-lt); margin-top: 8px; }
+.qt-connector a { color: var(--gold); font-weight: 700; text-decoration: underline; }
+.contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 32px; }
+.contact-item strong { display: block; font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.contact-item span { font-size: 14.5px; color: var(--white); }
+
+footer { background: var(--green-900); padding: 20px 48px; font-size: 12px; color: rgba(255,255,255,0.3); display: flex; justify-content: space-between; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; } .nav-links { gap: 14px; } .nav-links a { font-size: 11px; }
+  .hero { grid-template-columns: 1fr; padding: 48px 20px 40px; gap: 32px; }
+  .hero h1 { font-size: 30px; }
+  .hero-stats { padding: 20px 18px; }
+  section { padding: 44px 20px; } section h2 { font-size: 24px; }
+  .dual-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+  .timeline-left { display: flex; flex-wrap: wrap; gap: 6px; align-items: baseline; }
+  .contact-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .contact-section { padding: 44px 20px; }
+  footer { padding: 16px 20px; flex-direction: column; gap: 4px; }
+  .nav { height: auto; flex-wrap: wrap; padding: 10px 20px; gap: 8px; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 26px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .nav { height: auto; flex-wrap: wrap; padding: 10px 20px; gap: 8px; }
+  .nav-links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Jose M. Portal Obregon</span>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <div class="nav-drop-wrap">
+      <a href="/services/">Services</a>
+      <div class="nav-dropdown">
+        <a href="/services/#part-a">Part A — Compliance Guidance</a>
+        <a href="/services/#part-b">Part B — Digital Record System</a>
+      </div>
+    </div>
+    <a href="#" class="nav-current">Profile</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">Production Operations · Digital Systems · Fresh Produce Industry</div>
+    <h1>Where the floor<br>meets <span class="accent">the system.</span></h1>
+    <p class="hero-role">Production Supervisor & Operations Systems Builder — Victoria, Australia</p>
+    <p class="hero-desc">
+      I combine 10+ years of hands-on experience in fresh food production and quality assurance
+      with practical digital systems development. The tools I build are designed by someone who
+      works in the industry — not just in software.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Google Apps Script</span>
+      <span class="tag">Google Sheets</span>
+      <span class="tag">Process Automation</span>
+      <span class="tag">HACCP / GMP</span>
+      <span class="tag">Hydroponics</span>
+      <span class="tag">Production Planning</span>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <h3>At a glance</h3>
+    <div class="stat-item"><div class="stat-value">10+</div><div class="stat-label">Years in food production & QA</div></div>
+    <hr class="stat-divider">
+    <div class="stat-item"><div class="stat-value">5</div><div class="stat-label">Digital systems built & in active use</div></div>
+    <hr class="stat-divider">
+    <div class="stat-item"><div class="stat-value">2,800+</div><div class="stat-label">Production records managed live</div></div>
+    <hr class="stat-divider">
+    <div class="stat-item"><div class="stat-value">0</div><div class="stat-label">Software licences required</div></div>
+  </div>
+</div>
+
+<section id="profile">
+  <div class="section-label">Profile</div>
+  <h2>Two disciplines, one professional.</h2>
+  <p class="section-intro">
+    My career spans two interconnected areas that most professionals keep separate.
+    I bring both to every role and every project.
+  </p>
+  <div class="dual-grid">
+    <div class="profile-card profile-accent">
+      <h3>Production & Quality Assurance</h3>
+      <p>
+        Over 7 years in dairy manufacturing QA and microbiology at Gloria S.A. (Peru's market leader),
+        followed by supervisory experience at a commercial hydroponic growing facility in Victoria.
+        Deep knowledge of HACCP compliance, GMP, non-conformance management, environmental monitoring,
+        internal audits, and traceability systems. I know what food safety looks like on the floor.
+      </p>
+    </div>
+    <div class="profile-card profile-accent">
+      <h3>Digital Systems & Automation</h3>
+      <p>
+        Self-developed expertise in building production management systems using Google Sheets,
+        Google Apps Script, and HTML. All systems are live and in daily use in real commercial
+        operations. Specialising in workflow automation, digital transformation of manual processes,
+        and tools that people with no technical background can use from day one.
+      </p>
+    </div>
+  </div>
+  <div class="skills-row">
+    <span class="skill-pill">Google Sheets</span>
+    <span class="skill-pill">Google Apps Script</span>
+    <span class="skill-pill">HTML / CSS / JavaScript</span>
+    <span class="skill-pill">PDF Automation</span>
+    <span class="skill-pill">HACCP & GMP</span>
+    <span class="skill-pill">Microbiology</span>
+    <span class="skill-pill">Internal Audits</span>
+    <span class="skill-pill">Non-Conformance Management</span>
+    <span class="skill-pill">Production Planning</span>
+    <span class="skill-pill">Sowing & Harvest Scheduling</span>
+    <span class="skill-pill">Process Documentation</span>
+    <span class="skill-pill">Team Supervision</span>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2>Systems built. In use today.</h2>
+  <p class="section-intro">
+    Every project listed here is live, in active daily use in a commercial operation, and built
+    entirely without third-party software licences. (The largest system I've built — a full
+    production platform for a Werribee South nursery — is featured on the QualityTrace home page.)
+  </p>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-header">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div class="project-icon">📋</div>
+          <div>
+            <h3>Order Management System</h3>
+            <div class="project-org">Little River Hydroponics — VIC</div>
+          </div>
+        </div>
+        <span class="project-badge live">● Live</span>
+      </div>
+      <p class="project-desc">
+        Digitised the full order intake workflow. The system reads client purchase order PDFs
+        automatically, extracts PO numbers, delivery dates, SKUs and quantities, and writes
+        them directly into the weekly planning board. Detects duplicates, calculates packed-on
+        and best-before dates, and logs every import. Includes a change register interface
+        with reason tracking, and a monthly commitment vs. fulfilment dashboard.
+      </p>
+      <div class="project-features">
+        <span class="feature-tag">PDF auto-reading</span>
+        <span class="feature-tag">Auto data entry</span>
+        <span class="feature-tag">Duplicate detection</span>
+        <span class="feature-tag">Import log</span>
+        <span class="feature-tag">Fulfilment tracking</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div class="project-icon">🗺️</div>
+          <div>
+            <h3>Sowing Log & Production Map</h3>
+            <div class="project-org">Little River Hydroponics — VIC</div>
+          </div>
+        </div>
+        <span class="project-badge live">● Live</span>
+      </div>
+      <p class="project-desc">
+        Digital sowing register that goes beyond simple logging. Organises records by variety
+        and line, shows current available stock per product, and generates a visual production
+        map showing what is growing in each system and line. Supports sowing decisions by
+        showing adjacent crops and available positions across the entire growing floor.
+      </p>
+      <div class="project-features">
+        <span class="feature-tag">Sowing register</span>
+        <span class="feature-tag">Stock by variety</span>
+        <span class="feature-tag">Production map</span>
+        <span class="feature-tag">Line & position tracking</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div class="project-icon">🧪</div>
+          <div>
+            <h3>Fertiliser Consumption Monitor</h3>
+            <div class="project-org">Little River Hydroponics — VIC</div>
+          </div>
+        </div>
+        <span class="project-badge live">● Live</span>
+      </div>
+      <p class="project-desc">
+        Daily tracking of fertiliser consumption per growing system. Records usage volumes,
+        acid refills, EC and pH monitoring, and probe calibrations. Enables deviation detection
+        correlated with environmental variables such as temperature, rainfall, and time of
+        reading. Complemented by digital formats for machinery checks and incident recording.
+      </p>
+      <div class="project-features">
+        <span class="feature-tag">Daily usage log</span>
+        <span class="feature-tag">EC & pH tracking</span>
+        <span class="feature-tag">Deviation alerts</span>
+        <span class="feature-tag">Machinery checklists</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div class="project-icon">👥</div>
+          <div>
+            <h3>Worker Time Tracking System</h3>
+            <div class="project-org">Little River Hydroponics — VIC</div>
+          </div>
+        </div>
+        <span class="project-badge live">● Live</span>
+      </div>
+      <p class="project-desc">
+        Full digital time-keeping system built on Google Forms and Google Sheets. Workers log
+        in and out via published web forms with PIN authentication. The system automatically
+        calculates raw hours, deducts breaks, and generates a weekly summary filterable by
+        worker and date range. Includes manual record support, employee register, SOPs, and
+        payroll preparation output. 779+ entries recorded to date.
+      </p>
+      <div class="project-features">
+        <span class="feature-tag">Log In / Log Out forms</span>
+        <span class="feature-tag">Auto hour calculation</span>
+        <span class="feature-tag">Weekly summary</span>
+        <span class="feature-tag">PIN authentication</span>
+        <span class="feature-tag">779+ records</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <h2>Where this comes from.</h2>
+  <p class="section-intro">
+    All of the above was built during, and in direct service of, real production roles.
+  </p>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="timeline-period">Oct 2022 — Present</div>
+        <div class="timeline-company">Little River Hydroponics</div>
+        <div class="timeline-location">Victoria, Australia</div>
+      </div>
+      <div class="timeline-right">
+        <h3>Production Supervisor</h3>
+        <p>Supervise daily operations in a commercial fresh food hydroponic production environment. Responsible for food safety compliance, quality standards, staff training, and traceability. Simultaneously designed and built five digital systems currently in active use across the operation.</p>
+        <div class="timeline-achievements">
+          <div class="achievement">GMP and HACCP compliance monitoring across production and packing activities</div>
+          <div class="achievement">Non-conformance identification, root cause analysis, and corrective action support</div>
+          <div class="achievement">Built and deployed 5 operational digital tools — order management, sowing log, time tracking, fertiliser monitoring, and production mapping</div>
+          <div class="achievement">Staff training in hygiene, compliance, and operational procedures</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="timeline-period">Jun 2012 — Apr 2019</div>
+        <div class="timeline-company">Gloria S.A.</div>
+        <div class="timeline-location">Dairy Industry — Peru</div>
+      </div>
+      <div class="timeline-right">
+        <h3>Microbiology Analyst → Quality Inspector</h3>
+        <p>6 years 9 months at Peru's leading dairy manufacturer. Progressed from laboratory microbiology analyst to quality inspector with direct presence on the production floor. Broad expertise across microbiological testing, environmental monitoring, and quality verification.</p>
+        <div class="timeline-achievements">
+          <div class="achievement">High-volume microbiological testing using 3M Petrifilm, culture methods, and membrane filtration</div>
+          <div class="achievement">Environmental monitoring programs including surface and equipment swabbing</div>
+          <div class="achievement">Raw milk analysis — physicochemical testing and antibiotic residue detection</div>
+          <div class="achievement">HACCP and GMP compliance through routine verification and internal audits</div>
+          <div class="achievement">Cross-functional communication between laboratory and manufacturing teams as Quality Inspector</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="timeline-period">Feb 2011 — May 2011</div>
+        <div class="timeline-company">Agroworld</div>
+        <div class="timeline-location">Peru</div>
+      </div>
+      <div class="timeline-right">
+        <h3>Microbiology / Quality Analyst</h3>
+        <p>Supported microbiological testing and quality control in a food laboratory environment. Sample preparation, testing, and documentation following established SOPs and food safety standards.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section style="background: var(--sand);">
+  <div class="section-label">Education</div>
+  <h2>Formal training behind the practice.</h2>
+  <p class="section-intro">A science foundation, followed by three progressive Australian diplomas built around production, quality, and risk.</p>
+
+  <div class="edu-block">
+    <div class="edu-period">2019 – 2023 · ACAH, Melbourne VIC</div>
+    <div class="edu-title">Australian Qualifications — Production, Quality & Risk</div>
+    <div class="edu-desc">
+      Three progressive diplomas — Diploma of Agribusiness, Diploma of Production Horticulture,
+      and Advanced Diploma of Agribusiness Management — built around the exact challenges
+      growers face day to day: production planning, quality assurance, risk, and biosecurity.
+    </div>
+    <div class="edu-pills">
+      <span class="edu-pill">Farm Biosecurity Planning</span>
+      <span class="edu-pill">Chemical Use Strategy</span>
+      <span class="edu-pill">QA Program Implementation</span>
+      <span class="edu-pill">Agribusiness Risk Management</span>
+      <span class="edu-pill">Export Market Development</span>
+      <span class="edu-pill">Climate Risk Management</span>
+      <span class="edu-pill">Hydroponic Systems</span>
+      <span class="edu-pill">Work Health & Safety</span>
+    </div>
+  </div>
+
+  <div class="edu-block simple">
+    <div class="edu-period">2005 – 2010 · Universidad Nacional Mayor de San Marcos, Lima</div>
+    <div class="edu-title">Bachelor in Biology</div>
+    <div class="edu-desc" style="margin-top:8px; margin-bottom:0;">Scientific foundation behind everything above — one of Latin America's oldest universities.</div>
+  </div>
+</section>
+
+<div class="contact-section" id="contact">
+  <div class="section-label">Contact</div>
+  <h2>Open to projects and opportunities.</h2>
+  <p class="section-intro">
+    Available for digital systems implementation projects in the fresh produce sector,
+    as well as production operations roles in Victoria.
+  </p>
+  <p class="qt-connector">Looking for farm compliance help instead? <a href="/">See QualityTrace →</a></p>
+  <div class="contact-grid">
+    <div class="contact-item"><strong>Name</strong><span>Jose Martin Portal Obregon</span></div>
+    <div class="contact-item"><strong>Email</strong><span>qualitytrace.au@gmail.com</span></div>
+    <div class="contact-item"><strong>Phone</strong><span>0487 998 136</span></div>
+    <div class="contact-item"><strong>Location</strong><span>Geelong West, VIC, Australia</span></div>
+  </div>
+</div>
+
+<footer>
+  <span>Jose Martin Portal Obregon — Profile</span>
+  <span>2026</span>
+</footer>
+
+</body>
+</html>
